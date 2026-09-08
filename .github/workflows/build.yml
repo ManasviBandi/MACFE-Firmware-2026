@@ -1,0 +1,21 @@
+name: Build C++
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile C++ program
+        run: g++ -std=c++11 hello.cpp -o hello
+
+      - name: Run program
+        run: ./hello
